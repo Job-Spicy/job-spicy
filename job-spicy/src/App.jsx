@@ -1,7 +1,7 @@
 import "./App.css"
 import { Route, Routes } from "react-router-dom"
 import { Nav } from "./components/Nav"
-import { JobsList } from "./components/JobsList";
+import { Home } from "./components/Home";
 import { Fallback } from "./components/Fallback";
 import { JobDetails } from "./components/JobDetails";
 
@@ -10,7 +10,7 @@ function App() {
     <>
       <Nav />
       <Routes>
-        <Route path='/' element={<JobsList />} />
+        <Route path='/' element={<Home />} />
         <Route path='/jobs/:id' element={<JobDetails />} />
         <Route path='*' element={ <Fallback /> } />
       </Routes>
