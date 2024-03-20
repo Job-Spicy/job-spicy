@@ -1,16 +1,24 @@
-// did i do it?
-/*
-realising that we will probably have more than one
-fetch function? you can name the generic one
-fetchData like the file, but there might be
-more specific fetch functions later on.
+export const fetchData = async (url, options = {}) => {
+	try {
+		const response = await fetch(url, options)
 
-if that's the case you can change the file name! it
-will cause a scary merge conflict but don't worry about it
+		if (!response.ok)
+			throw new Error(
+				`Fetch failed with status - ${response.status}, ${response.statusText}`
+			)
 
-the fetch functions will be imported in the context folder! i already
-left a placeholder for you
+		const isJson = (response.headers.get("content-type") || "").includes(
+			"application/json"
+		)
+		if (isJson) {
+			return [await response.json(), null]
+		} else {
+			return [await response.text(), null]
+		}
+	} catch (error) {
+		console.warn(error)
+		return [null, error]
+	}
+}
 
-test it with console logs! your fetch works fine, the data just isn't set up how you think it is lol,
-so read over the response object <3
-*/
+// W useEffect... this is the only true fetch function required
