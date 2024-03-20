@@ -8,8 +8,6 @@ export const JobsList = () => {
 	const { jobs } = useContext(JobsContext)
 
 	return (
-		<>
-			<h1>Job Spicy 🌶️</h1>
 			<ul>
 				{jobs.map(job => {
 					return (
@@ -19,6 +17,5 @@ export const JobsList = () => {
 					)
 				})}
 			</ul>
-		</>
 	)
 }
