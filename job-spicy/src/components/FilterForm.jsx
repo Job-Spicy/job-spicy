@@ -59,6 +59,7 @@ export const FilterForm = () => {
 				type='text'
 				id='tag-search'
 				onChange={e => setTag(e.target.value)}
+				placeholder='Ex. Python, Excel, etc.'
 			/>
 
 			<label htmlFor='locations'> Based in: </label>

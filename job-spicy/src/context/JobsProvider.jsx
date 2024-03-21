@@ -32,20 +32,27 @@ const JobsProvider = ({ children }) => {
 	const [jobs, setJobs] = useState([])
 	const [url, setURL] = useState("https://jobicy.com/api/v2/remote-jobs")
 
+  // form stuff
 	const [geo, setGeo] = useState("")
 	const [count, setCount] = useState("50")
 	const [industry, setIndustry] = useState("")
-	const [tag, setTag] = useState("")
+  const [tag, setTag] = useState("")
+  
+  const [favorites, setFavorites] = useState([testJobs])
 
 	useEffect(() => {
 		const doFetch = async () => {
 			const [data, error] = await fetchData(url)
 			if (data) setJobs(data.jobs)
 			if (error) setError(error)
-			console.log("url changed")
 		}
 		doFetch()
-	}, [url])
+  }, [url])
+  
+  useEffect(() => {
+    // write to `localStorage`
+    console.log('added to favorites!')
+  }, [favorites])
 
 	const contextValues = {
 		jobs,
@@ -58,7 +65,8 @@ const JobsProvider = ({ children }) => {
 		count,
 		setCount,
 		tag,
-		setTag,
+    setTag,
+    favorites,
 	}
 
 	return (
