@@ -1,33 +1,44 @@
 import { useParams } from "react-router-dom"
 import { useContext } from "react"
 import JobsContext from "../context/JobsContext"
-//import { Fallback } from "./Fallback"
-// i think this import is unnecessary but it was in the robot assignment, we'll see!
+import { readableDate } from "../utils/string-manipulation/readableDate"
+import { fixSalary } from "../utils/string-manipulation/fixSalary"
+import { capitalizeType } from "../utils/string-manipulation/capitalizeType"
+import { fixIndustry } from "../utils/string-manipulation/fixIndustry"
+
+import { Fallback } from "./Fallback"
 
 export const JobDetails = () => {
 	//individual page for jobs once they've been clicked on
 	const { jobs } = useContext(JobsContext)
 	const { id } = useParams()
 
-	const selectedJob = jobs.find(job => job.id === parseInt(id))
-	// if (!job) return <Fallback />
-	// i think this line is unnecessary but AGAIN it was in the robo assignment 🤖
+	const currJob = jobs.find(job => job.id === parseInt(id))
+	if (!currJob) return <Fallback />
 
 	// you know the vibes. all the stuff here is just placeholders. move
 	// it around however you want.
+
 	return (
 		<>
-			<h1> {selectedJob.jobTitle} </h1>
-			<h2>{selectedJob.companyName} </h2>
+			<h1> {currJob.jobTitle} </h1>
+			<img src={currJob.companyLogo} alt={currJob.companyName} />
+			<h2>{currJob.companyName} </h2>
 			<h3>
-				Type: {selectedJob.jobType} | Estimated Salary({selectedJob.salaryCurrency}):
-        {selectedJob.annualSalaryMin} - {selectedJob.annualSalaryMax} | Remote From: {selectedJob.jobGeo}
-      </h3>
-      <p>Job Level: {selectedJob.jobLevel} | Industry: {selectedJob.jobIndustry} | Posted: {selectedJob.pubDate }</p>
-      <p></p>
-			<div
-				dangerouslySetInnerHTML={{ __html: selectedJob.jobDescription }}
-			></div>
+				Estimated Salary:{" "}
+				{fixSalary(
+					currJob.annualSalaryMin,
+					currJob.annualSalaryMax,
+					currJob.salaryCurrency
+				)}{" "}
+				| Remote From: {currJob.jobGeo}
+			</h3>
+			<p>
+				Job Level: {currJob.jobLevel} | Type: {capitalizeType(currJob.jobType)}{" "}
+				| Industry: {fixIndustry(currJob.jobIndustry)}
+			</p>
+			<p>Published: {readableDate(currJob.pubDate)}</p>
+			<div dangerouslySetInnerHTML={{ __html: currJob.jobDescription }}></div>
 		</>
 	)
 }
