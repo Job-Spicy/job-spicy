@@ -26,9 +26,8 @@ export const FilterForm = () => {
 	))
 	//Türkiye is passed thru as turkiye.
 	// location === "Turkiye" ? "Türkiye" : location
-	// this works but when you're searching for it it doesn't work unless you type 'ü'
-
-	// on submission lowercase and omit value if "any" is chosen
+  // this works but when you're searching for it it doesn't work unless you type 'ü'
+  
 	const industryOptions = industries.map(currIndustry => (
 		<option value={currIndustry.toLowerCase()} key={currIndustry}>
 			{industryOutliers[currIndustry]
@@ -42,17 +41,17 @@ export const FilterForm = () => {
 		console.log({ industry, count, geo, tag })
 		let newURL = "https://jobicy.com/api/v2/remote-jobs?"
 		if (count) newURL += `count=${count}&`
-		if (geo) newURL += `geo=${geo.replaceAll(" ", "-")}&` // space handling
+		if (geo) newURL += `geo=${geo.replaceAll(" ", "-")}&` 
 		if (industry) newURL += `industry=${industry.replaceAll(" ", "-")}&`
-		if (tag) newURL += `tag=${tag.replaceAll(" ", "+")}&` // space handling
+		if (tag) newURL += `tag=${tag.replaceAll(" ", "+")}&`
 
 		newURL.at(-1) === "&" ? setURL(newURL.slice(0, -1)) : setURL(newURL)
 		console.log(newURL)
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<h2>Find Remote Jobs!</h2>
+		<form onSubmit={handleSubmit} aria-labelledby="form-heading">
+			<h2 id='form-heading'>Find Remote Jobs!</h2>
 			<hr></hr>
 			<div id='actual-form'>
 				<div id='text-input'>
@@ -115,11 +114,9 @@ export const FilterForm = () => {
 					</div>
 				</div>
 
-       
-        <button>Search</button>
-       
-      </div>
-      <hr></hr>
+				<button>Search</button>
+			</div>
+			<hr></hr>
 		</form>
 	)
 }

@@ -1,19 +1,34 @@
 import JobsContext from "../context/JobsContext"
 import { useContext } from "react"
 
-export const FavoritesButton = ({ favoritedAlready, job }) => {
+export const FavoritesButton = ({ job }) => {
 	const { favorites, setFavorites } = useContext(JobsContext)
 
-	const addToFavorites = e => {
-		console.log(favoritedAlready)
+	const addToFavorites = () => {
 		setFavorites([...favorites, job])
-		console.log(favorites)
-		console.log(job)
 	}
 
-	const removeFromFavorites = e => {}
+	const removeFromFavorites = () => {
+		const removedJob = favorites.indexOf(job)
+		const newFavorites = [...favorites]
+		newFavorites.splice(removedJob, 1)
+		setFavorites([...newFavorites])
+	}
 
-	if (favoritedAlready)
-		return <button onClick={removeFromFavorites}>Remove From Favorites</button>
-	return <button onClick={addToFavorites}>Save to Favorites</button>
+	if (favorites.find(currJob => currJob.id === job.id))
+		return (
+			<button
+        onClick={removeFromFavorites}
+				className='remove-button'
+			>
+				Remove From Favorites
+			</button>
+		)
+	return (
+		<button
+			onClick={addToFavorites}
+		>
+			Save to Favorites
+		</button>
+	)
 }

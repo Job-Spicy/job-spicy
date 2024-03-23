@@ -47,15 +47,16 @@ button {
 	font-size: 1em;
 	font-weight: 500;
 	font-family: inherit;
-	background-color: #f6cdcdde;
+	background-color: rgb(192, 235, 127);
 	color: #481b1b;
 	cursor: pointer;
 	transition: all 0.25s;
 }
-button:hover {
-	border-color: #f6cdcdde;
-	background-color: #1d0e0e;
-	color: #f6cdcdde;
+button:hover,
+button:focus {
+	border-color: rgb(192, 235, 127);
+	background-color: #1d0e0e00;
+	color: rgb(192, 235, 127);
 }
 button:focus,
 button:focus-visible {

@@ -13,18 +13,13 @@ export const Nav = () => {
 			<p onClick={handleClick}>🌶️Job Spicy</p>
 			<ul>
 				<li>
-					<NavLink to='/' className='nav-link'>
+					<NavLink to='/' className='nav-link' activeClassName='nav-active'>
 						Home
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to='/favorites' className='nav-link'>
+					<NavLink to='/favorites' className='nav-link' activeClassName='nav-active'>
 						Favorites
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to='/resources' className='nav-link'>
-						Resources
 					</NavLink>
 				</li>
 			</ul>

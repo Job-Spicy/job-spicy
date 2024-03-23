@@ -20,5 +20,3 @@ export const fetchData = async (url, options = {}) => {
 		return [null, error]
 	}
 }
-
-// W useEffect... this is the only true fetch function required

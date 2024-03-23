@@ -6,12 +6,7 @@ import { capitalizeType } from "../utils/string-manipulation/capitalizeType"
 import { FavoritesButton } from "./FavoritesButton"
 import { Link } from "react-router-dom"
 
-export const JobListing = ({ job, favoritedAlready }) => {
-	// check the provider file for any rendering issues i caught
-	// how shall we render if there is no provided salary range? or one value is provided instead of two?
-
-	// i'm not emotionally attached to this format, change it how you would like
-	// as long as the information is there! ( and it's not ugly )
+export const JobListing = ({ job }) => {
 
 	const navigate = useNavigate()
 
@@ -60,7 +55,7 @@ export const JobListing = ({ job, favoritedAlready }) => {
 					<p className='listing-text-child'>
 						Posted: {readableDate(job.pubDate)}
 					</p>
-					<FavoritesButton favoritedAlready={favoritedAlready} job={job} />
+					<FavoritesButton job={job} />
 				</div>
 			</div>
 		</div>

@@ -6,7 +6,8 @@ export const JobsList = () => {
 	const { jobs } = useContext(JobsContext)
 
 	return (
-			<ul className="jobs-list">
+		<section>
+			<ul className='jobs-list'>
 				{jobs.map(job => {
 					return (
 						<li key={job.id}>
@@ -15,5 +16,6 @@ export const JobsList = () => {
 					)
 				})}
 			</ul>
+		</section>
 	)
 }
