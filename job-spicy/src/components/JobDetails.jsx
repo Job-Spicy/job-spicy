@@ -7,17 +7,16 @@ import { capitalizeType } from "../utils/string-manipulation/capitalizeType"
 import { fixIndustry } from "../utils/string-manipulation/fixIndustry"
 import { FavoritesButton } from "./FavoritesButton"
 import { Fallback } from "./Fallback"
+import "../css/JobDetails.css"
 
-export const JobDetails = ({ favoritedAlready }) => {
-	//individual page for jobs once they've been clicked on
+export const JobDetails = () => {
+
 	const { jobs } = useContext(JobsContext)
 	const { id } = useParams()
 
 	const currJob = jobs.find(job => job.id === parseInt(id))
 	if (!currJob) return <Fallback />
 
-	// you know the vibes. all the stuff here is just placeholders. move
-	// it around however you want.
 
 	return (
 		<>
@@ -69,7 +68,7 @@ export const JobDetails = ({ favoritedAlready }) => {
 				</div>
 			</div>
 
-			<FavoritesButton favoritedAlready={favoritedAlready} />
+			<FavoritesButton job={currJob} />
 			<hr id='detail-divider'></hr>
 
 			<div
