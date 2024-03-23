@@ -4,7 +4,7 @@ import { fetchData } from "../utils/fetchData"
 // import fetch function here
 
 const JobsProvider = ({ children }) => {
-  // example job object
+	// example job object
 	const testJobs = {
 		id: 101514,
 		url: "https://jobicy.com/jobs/101514-senior-frontend-engineer-4",
@@ -32,13 +32,13 @@ const JobsProvider = ({ children }) => {
 	const [jobs, setJobs] = useState([])
 	const [url, setURL] = useState("https://jobicy.com/api/v2/remote-jobs")
 
-  // form stuff
+	// form stuff
 	const [geo, setGeo] = useState("")
 	const [count, setCount] = useState("50")
 	const [industry, setIndustry] = useState("")
-  const [tag, setTag] = useState("")
-  
-  const [favorites, setFavorites] = useState([testJobs])
+	const [tag, setTag] = useState("")
+
+	const [favorites, setFavorites] = useState([testJobs])
 
 	useEffect(() => {
 		const doFetch = async () => {
@@ -47,12 +47,12 @@ const JobsProvider = ({ children }) => {
 			if (error) setError(error)
 		}
 		doFetch()
-  }, [url])
-  
-  useEffect(() => {
-    // write to `localStorage`
-    console.log('added to favorites!')
-  }, [favorites])
+	}, [url])
+
+	useEffect(() => {
+		// write to `localStorage`
+		console.log("added to favorites!")
+	}, [favorites])
 
 	const contextValues = {
 		jobs,
@@ -65,8 +65,9 @@ const JobsProvider = ({ children }) => {
 		count,
 		setCount,
 		tag,
-    setTag,
-    favorites,
+		setTag,
+		favorites,
+		setFavorites,
 	}
 
 	return (
