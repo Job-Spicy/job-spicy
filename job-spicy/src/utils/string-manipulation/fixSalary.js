@@ -6,5 +6,5 @@ export const fixSalary = (salaryMin, salaryMax, currency) => {
   if (!renderedSalary && salaryMax) renderedSalary += salaryMax;
   if (currency) renderedSalary += " " + currency;
 
-  return renderedSalary || "N/A";
+  return renderedSalary;
 };

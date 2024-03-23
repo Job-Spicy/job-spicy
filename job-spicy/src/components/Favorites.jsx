@@ -9,16 +9,16 @@ export const Favorites = () => {
 	return (
 		<>
 			<h1>Favorites</h1>
-			<p>
+			<h2>
 				You've saved {favorites.length}{" "}
 				{favorites.length === 1 ? "job" : "jobs"}
 				{favorites.length ? "!" : " :("}
-			</p>
-			<ul>
+			</h2>
+			<ul className='jobs-list'>
 				{favorites.map(job => {
 					return (
 						<li key={job.id}>
-							<JobListing job={job} />
+							<JobListing job={job} favoritedAlready={true} />
 						</li>
 					)
 				})}

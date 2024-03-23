@@ -6,7 +6,7 @@ export const JobsList = () => {
 	const { jobs } = useContext(JobsContext)
 
 	return (
-			<ul>
+			<ul className="jobs-list">
 				{jobs.map(job => {
 					return (
 						<li key={job.id}>

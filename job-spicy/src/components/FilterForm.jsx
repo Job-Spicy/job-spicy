@@ -53,54 +53,73 @@ export const FilterForm = () => {
 	return (
 		<form onSubmit={handleSubmit}>
 			<h2>Find Remote Jobs!</h2>
+			<hr></hr>
+			<div id='actual-form'>
+				<div id='text-input'>
+					<label htmlFor='tag-search'>Search by keyword:</label>
+					<input
+						type='text'
+						id='tag-search'
+						onChange={e => setTag(e.target.value)}
+						placeholder='Ex. Python, Excel, etc.'
+						className='form-input'
+					/>
+				</div>
 
-			<label htmlFor='tag-search'>Search by keyword: </label>
-			<input
-				type='text'
-				id='tag-search'
-				onChange={e => setTag(e.target.value)}
-				placeholder='Ex. Python, Excel, etc.'
-			/>
+				<div id='fixed-inputs'>
+					<div className='fixed-input'>
+						<label htmlFor='locations'>Based in:</label>
+						<input
+							list='location-select'
+							id='locations'
+							onChange={e => setGeo(e.target.value)}
+							placeholder='Anywhere'
+							className='form-input'
+						/>
+						<datalist id='location-select'>
+							<option value='' key='any'>
+								Anywhere
+							</option>
+							{locationOptions}
+						</datalist>
+					</div>
 
-			<label htmlFor='locations'> Based in: </label>
-			<input
-				list='location-select'
-				id='locations'
-				onChange={e => setGeo(e.target.value)}
-				placeholder='Anywhere'
-			/>
-			<datalist id='location-select'>
-				<option value='' key='any'>
-					Anywhere
-				</option>
-				{locationOptions}
-			</datalist>
+					<div className='fixed-input'>
+						<label htmlFor='indstries'>Industry:</label>
+						<input
+							list='industry-select'
+							id='industries'
+							onChange={e => setIndustry(e.target.value)}
+							placeholder='Any'
+							className='form-input'
+						/>
+						<datalist id='industry-select'>
+							<option value='' key='any'>
+								Any
+							</option>
+							{industryOptions}
+						</datalist>
+					</div>
 
-			<label htmlFor='indstries'> Industry: </label>
-			<input
-				list='industry-select'
-				id='industries'
-				onChange={e => setIndustry(e.target.value)}
-				placeholder='Any'
-			/>
-			<datalist id='industry-select'>
-				<option value='' key='any'>
-					Any
-				</option>
-				{industryOptions}
-			</datalist>
+					<div className='fixed-input'>
+						<label htmlFor='job-count'>Count:</label>
+						<input
+							type='number'
+							min='1'
+							max='50'
+							id='job-count'
+							placeholder='1-50 (default: 50)'
+							onChange={e => setCount(e.target.value)}
+							className='form-input'
+						/>
+					</div>
+				</div>
 
-			<label htmlFor='job-count'> Count: </label>
-			<input
-				type='number'
-				min='1'
-				max='50'
-				id='job-count'
-				placeholder='1-50 (default: 50)'
-				onChange={e => setCount(e.target.value)}
-			/>
-
-			<button>Search</button>
+       
+        <button>Search</button>
+       
+      </div>
+      <hr></hr>
 		</form>
 	)
 }
