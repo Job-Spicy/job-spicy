@@ -12,10 +12,9 @@ function App() {
 			<Nav />
 			<main>
 				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route path='/jobs/:id' element={<JobDetails />} />
-					<Route path='/favorites' element={<Favorites />} />
-					<Route path='/job-spicy/' element={<Nav />} />
+					<Route path='/job-spicy/' element={<Home />} />
+					<Route path='/job-spicy/jobs/:id' element={<JobDetails />} />
+					<Route path='/job-spicy/favorites' element={<Favorites />} />
 					<Route path='*' element={<Fallback />} />
 				</Routes>
 			</main>

@@ -25,7 +25,6 @@ const JobsProvider = ({ children }) => {
 	}, [url])
 
 	useEffect(() => {
-    console.log(getLocalFavorites())
     setLocalFavorites(favorites)
 	}, [favorites])
 

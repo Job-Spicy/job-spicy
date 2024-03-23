@@ -5,7 +5,7 @@ export const Nav = () => {
 	const navigate = useNavigate()
 
 	const handleClick = () => {
-		navigate(`/`)
+    navigate('/job-spicy/')
 	}
 
 	return (
@@ -13,12 +13,12 @@ export const Nav = () => {
 			<p onClick={handleClick}>🌶️Job Spicy</p>
 			<ul>
 				<li>
-					<NavLink to='/' className='nav-link' activeClassName='nav-active'>
+					<NavLink to='/job-spicy/' className='nav-link' activeClassName='nav-active'>
 						Home
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to='/favorites' className='nav-link' activeClassName='nav-active'>
+					<NavLink to='/job-spicy/favorites' className='nav-link' activeClassName='nav-active'>
 						Favorites
 					</NavLink>
 				</li>
