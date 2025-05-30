@@ -11,8 +11,9 @@ export const JobListing = ({ job }) => {
 
 	const handleClick = () => {
 		navigate(`/job-spicy/jobs/${job.id}`)
-	}
-
+  }
+  
+console.log(job)
 	return (
 		<div onDoubleClick={handleClick} className='job-listing'>
 			<div className='img-container'>
@@ -41,13 +42,13 @@ export const JobListing = ({ job }) => {
 					{job.jobGeo} | {capitalizeType(job.jobType)} | Experience Level:{" "}
 					{job.jobLevel}{" "}
 					{fixSalary(
-						job.annualSalaryMin,
-						job.annualSalaryMax,
+						job.salaryMin,
+						job.salaryMax,
 						job.salaryCurrency
 					)
 						? `| Estimated Salary: ${fixSalary(
-								job.annualSalaryMin,
-								job.annualSalaryMax,
+								job.salaryMin,
+								job.salaryMax,
 								job.salaryCurrency
 						  )}`
 						: ""}
